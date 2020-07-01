@@ -13,45 +13,46 @@ class _HeadphoneSelectorState extends State<HeadphoneSelector>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
 
     return Container(
       height: size.height * 0.39,
-      color: Colors.white,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: headphones.length,
           itemBuilder: (context, index) {
             Headphones page = headphones[index];
             return Container(
-              height: size.height * 0.36,
+              height: size.height * 0.38,
               width: size.width * 0.5,
-              color: Colors.teal,
               child: Stack(
+                fit: StackFit.expand,
                 children: [
                   Positioned(
                     bottom: 20.0,
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 10.0),
-                      height: size.height * 0.25,
-                      width: size.width * 0.45,
+                      height: size.height * 0.26,
+                      width: size.width * 0.47,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0),
                         boxShadow: [
                           BoxShadow(
-                              color: Colors.black12,
+                              color: Colors.white10,
                               offset: Offset(0, 10),
                               blurRadius: 10.0),
                         ],
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.topCenter,
+                  Positioned(
+                    top: -3.0,
+                    right: 30.0,
+                    left: 30.0,
                     child: Image.asset(
                       page.imgeUrl,
-                      height: size.height * 0.25,
+                      height: size.height * 0.22,
                     ),
                   ),
                   Positioned(
@@ -72,6 +73,21 @@ class _HeadphoneSelectorState extends State<HeadphoneSelector>
                     child: Text(
                       page.price,
                       style: TextStyle(fontSize: 20.0, color: kUtilsColor),
+                    ),
+                  ),
+                  Positioned(
+                    right: 13.0,
+                    bottom: 25.0,
+                    child: Container(
+                      padding: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        color: kUtilsColor,
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Icon(
+                        Icons.add_shopping_cart,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
